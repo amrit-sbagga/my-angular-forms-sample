@@ -1,0 +1,72 @@
+<h2>Employee Form</h2>
+<form #employeeLogin="ngForm" (ngSubmit)="onformSubmit(employeeLogin.value)">
+
+<label>Name</label><br>
+<input type="text" name="empname" [(ngModel)]="employee.empname" #empname="ngModel" 
+    placeholder="Enter your name" required minlength="6"/>
+<br>
+<div *ngIf="empname.invalid && (empname.dirty || empname.touched)" class="custalert">
+  <div *ngIf="empname.errors.required">
+    Name is required
+  </div>
+  <div *ngIf="empname.errors.minlength">
+    Name must be atleast 6 chars
+  </div>
+</div>
+<br>
+<label>Last Name</label><br>
+<input type="text" name="emplastname" [(ngModel)]="employee.emplastname" #emplastname="ngModel" 
+    placeholder="Enter your last name" required/>
+<br>
+<div *ngIf="emplastname.invalid && (emplastname.dirty || emplastname.touched)" class="custalert">
+  <div *ngIf="emplastname.errors.required">
+    Last Name is required
+  </div>
+</div>
+
+<br>
+<label>Email</label><br>
+<input type="text" name="empemailid" [(ngModel)]="employee.emailid" #empemailid="ngModel" 
+   placeholder="Enter your email" required/>
+<br>
+<div *ngIf="empemailid.invalid && (empemailid.dirty || empemailid.touched)" class="custalert">
+    <div *ngIf="empemailid.errors.required">
+      Email is required
+    </div>
+  </div>
+<br>
+
+<label>Password</label><br>
+<input type="password" name="pwd" [(ngModel)]="employee.pwd" placeholder="Enter your password"/>
+<br>
+<br>
+
+<label>Gender</label><br>
+<select name="gender" [(ngModel)]="employee.gender">
+    <option>Male</option>
+    <option>Female</option>
+</select>
+
+<br><br>
+<label>Contact Number</label><br>
+<input type="number" name="contactno" [(ngModel)]="employee.contactno"  
+    #contactno="ngModel" placeholder="Enter your number" required minlength="10"/>
+<br>
+<div *ngIf="contactno.invalid && (contactno.dirty || contactno.touched)" class="custalert">
+  <div *ngIf="contactno.errors.required">
+    Phone Number is required
+  </div>
+  <div *ngIf="contactno.errors.minlength">
+    Phone Number must be atleast 10 chars
+  </div>
+</div>
+<br>
+
+<label>Address</label><br>
+<textarea name="address" [(ngModel)]="employee.address" rows="4" columns="30"
+    #address="ngModel" placeholder="Enter your address" required></textarea>
+<br><br>
+
+<button type="submit" [disabled]="employeeLogin.invalid ">Submit</button>
+
+</form>

@@ -2,7 +2,8 @@
 <form #customerLogin="ngForm" (ngSubmit)="onformSubmit(customerLogin.value)">
 
 <label>Name</label><br>
-<input type="text" name="custname" [(ngModel)]="customer.cname" #custname="ngModel" placeholder="Enter your name" required minlength="6"/>
+<input type="text" name="custname" [(ngModel)]="customer.cname" #custname="ngModel" 
+    placeholder="Enter your name" required minlength="6"/>
 <br>
 <div *ngIf="custname.invalid && (custname.dirty || custname.touched)" class="custalert">
   <div *ngIf="custname.errors.required">
@@ -10,24 +11,26 @@
   </div>
   <div *ngIf="custname.errors.minlength">
     Name must be atleast 6 chars
+    <!-- #custname.class="forminput" -->
   </div>
 </div>
 
-<br><br>
+<br>
 <label>Email</label><br>
-<input type="text" name="custemailid" [(ngModel)]="customer.emailid" #custemailid="ngModel" placeholder="Enter your email" required/>
+<input type="text" name="custemailid" [(ngModel)]="customer.emailid" #custemailid="ngModel" 
+   placeholder="Enter your email" required/>
 <br>
 <div *ngIf="custemailid.invalid && (custemailid.dirty || custemailid.touched)" class="custalert">
     <div *ngIf="custemailid.errors.required">
       Email is required
     </div>
   </div>
-<br><br>
+<br>
 
 <label>Password</label><br>
 <input type="password" name="pwd" [(ngModel)]="customer.pwd" placeholder="Enter your password"/>
 <br><br>
 
-<input type="submit" value="Submit"/>
+<button type="submit" [disabled]="customerLogin.invalid ">Submit</button>
 
 </form>
