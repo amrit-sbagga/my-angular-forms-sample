@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "my-angular-forms-sample"
+  "defaultProject": "my-angular-forms-sample",
+  "cli": {
+    "analytics": false
+  }
 }
